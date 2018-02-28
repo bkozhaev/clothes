@@ -9,7 +9,7 @@ class Clothing
   end
 
   def split_temperature
-    @temperature.delete!('() ').sub(',','..')
+    @temperature.delete!('() ').sub(',', '..')
   end
 
   def to_s
