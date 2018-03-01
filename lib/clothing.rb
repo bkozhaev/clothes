@@ -2,7 +2,7 @@ class Clothing
   attr_reader :name, :type, :temperature
 
   def initialize(file_path)
-    @name, @type, @temperature = File.readlines(file_path, encdoing: 'UTF-8')
+    @name, @type, @temperature = File.readlines(file_path, encoding: 'UTF-8')
     @name = @name.chomp
     @type = @type.chomp
     @temperature = temperature.chomp
