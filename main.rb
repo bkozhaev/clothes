@@ -1,4 +1,4 @@
-require_relative 'lib/clothing.rb'
+require_relative 'lib/clothing'
 
 current_path = File.dirname(__FILE__)
 file_path = current_path + '/data'
@@ -8,8 +8,8 @@ file_paths = Dir[file_path + "/*.txt"]
 clothes = []
 chosen_clothes = []
 
-file_paths.each do |i|
-  clothes << Clothing.new(i)
+file_paths.each do |file_path|
+  clothes << Clothing.new(file_path)
 end
 
 puts "Сколько градусов за окном? (можно с минусом)"
@@ -21,16 +21,16 @@ until user_input =~ /^[\+\-](\d)/ || user_input =~ /^(\d)/
 end
 
 user_input = user_input.to_i
-clothes.each do |i|
-  interval = i.temperature.delete('() ').split(',')
+clothes.each do |clothing|
   case user_input
-    when interval[0].to_i..interval[1].to_i then chosen_clothes << i
+    when clothing.max_temp..clothing.min_temp then chosen_clothes << clothing
   end
 end
+
 puts
 puts "Предлагаем сегодня надеть:"
 puts
-chosen_clothes.each do |i|
-  puts i.to_s
+chosen_clothes.each do |clothing|
+  puts clothing
 end
 
