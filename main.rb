@@ -24,8 +24,7 @@ user_input = user_input.to_i
 clothes.each do |i|
   interval = i.temperature.delete('() ').split(',')
   case user_input
-    when interval[0].to_i..interval[1].to_i then
-      chosen_clothes << i
+    when interval[0].to_i..interval[1].to_i then chosen_clothes << i
   end
 end
 puts
