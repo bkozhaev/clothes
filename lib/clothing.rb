@@ -5,7 +5,7 @@ class Clothing
     @name, @type, @temperature = File.readlines(file_path, encoding: 'UTF-8')
     @name = @name.chomp
     @type = @type.chomp
-    @temperature = temperature.chomp
+    @temperature = @temperature.chomp
   end
 
   def split_temperature
