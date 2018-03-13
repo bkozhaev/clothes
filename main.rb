@@ -1,16 +1,11 @@
 require_relative 'lib/clothing'
+require_relative 'lib/wardrob'
 
-current_path = File.dirname(__FILE__)
-file_path = current_path + '/data'
+file_path = __dir__ + '/data'
 
 file_paths = Dir[file_path + "/*.txt"]
 
-clothes = []
-chosen_clothes = []
-
-file_paths.each do |file_path|
-  clothes << Clothing.new(file_path)
-end
+wardrob = Wardrob.from_dir(file_paths)
 
 puts "Сколько градусов за окном? (можно с минусом)"
 
@@ -21,16 +16,14 @@ until user_input =~ /^[\+\-](\d)/ || user_input =~ /^(\d)/
 end
 
 user_input = user_input.to_i
-clothes.each do |clothing|
-  case user_input
-    when clothing.max_temp..clothing.min_temp then chosen_clothes << clothing
-  end
-end
+
+suitable_clothes = wardrob.get_suitable_clothing(user_input)
 
 puts
 puts "Предлагаем сегодня надеть:"
 puts
-chosen_clothes.each do |clothing|
+
+suitable_clothes.each do |clothing|
   puts clothing
 end
 
