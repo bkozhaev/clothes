@@ -22,6 +22,6 @@ describe 'wardrob.rb' do
   end
 
   it 'should return a string from clothing instance' do
-    expect(wardrob.get_suitable_clothing(20)[0]).to eql('Шлепанцы (Обувь) 20..40')
+    expect(wardrob.get_suitable_clothing(20)[0].to_s).to eql('Шлепанцы (Обувь) 20..40')
   end
 end
