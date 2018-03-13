@@ -5,10 +5,10 @@ class Wardrob
     @collection = collection
   end
 
-  def self.from_dir(file_dir)
+  def self.from_dir(clothing, file_dir)
     collection = []
     file_dir.each do |file_path|
-      collection << Clothing.from_file(file_path)
+      collection << clothing.from_file(file_path)
     end
     new(collection)
   end

@@ -5,7 +5,7 @@ file_path = __dir__ + '/data'
 
 file_paths = Dir[file_path + "/*.txt"]
 
-wardrob = Wardrob.from_dir(file_paths)
+wardrob = Wardrob.from_dir(Clothing, file_paths)
 
 puts "Сколько градусов за окном? (можно с минусом)"
 
