@@ -1,28 +1,25 @@
 require 'rspec'
 require_relative '../lib/clothing'
 
-describe 'clothing.rb' do
+describe '.from_file(file_path)' do
   let(:clothing) do
     Clothing.from_file(__dir__ + '/../data/01.txt')
   end
 
-  it 'should return instance of clothing' do
+  it 'should return instance of class Clothing' do
     expect(clothing).to be_an_instance_of(Clothing)
   end
 
-  it 'should return a type of clothing' do
+  it 'should fill attributes: name, type, max_temp, min_temp' do
     expect(clothing.type).to eql('Головной убор')
-  end
-
-  it 'should return a name of clothing' do
     expect(clothing.name).to eql('Шапка-ушанка')
-  end
-
-  it 'should return a max_temp of clothing' do
     expect(clothing.max_temp).to eql(-20)
+    expect(clothing.min_temp).to eql(-5)
   end
 
-  it 'should return arguments of a class instance as a string' do
-    expect(clothing.to_s).to eql('Шапка-ушанка (Головной убор) -20..-5')
+  describe '.to_s' do
+    it 'should return a string file containing attributes: name, tyep, max_temp, min_temp' do
+      expect(clothing.to_s).to eql('Шапка-ушанка (Головной убор) -20..-5')
+    end
   end
 end
