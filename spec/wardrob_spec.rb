@@ -23,21 +23,26 @@ describe '.from_dir(clothing, file_path)' do
     expect(wardrob.collection.first.max_temp).to eq(-20)
     expect(wardrob.collection.first.min_temp).to eq(-5)
   end
+end
 
-  describe '.get_suitable_clothing(temperature)' do
-    let(:clothes) do
-      wardrob.get_suitable_clothing(-5)
-    end
+describe '.get_suitable_clothing(temperature)' do
+  let(:wardrob) do
+    files_dir = ["#{__dir__}/../data/01.txt", "#{__dir__}/../data/04.txt"]
+    Wardrob.from_dir(Clothing, files_dir)
+  end
 
-    it 'should return an array of instances' do
-      expect(clothes).to be_an_instance_of(Array)
-    end
+  let(:clothes) do
+    wardrob.get_suitable_clothing(-5)
+  end
 
-    it 'should return clothing which suites to -5 parameter' do
-      expect(clothes.first.name).to eq('Шапка-ушанка')
-      expect(clothes.last.name).to eq('Джинсы')
-      expect(clothes.first.min_temp).to eq(-5)
-      expect(clothes.first.min_temp).to eq(-5)
-    end
+  it 'should return an array of instances' do
+    expect(clothes).to be_an_instance_of(Array)
+  end
+
+  it 'should return clothing which suites to -5 parameter' do
+    expect(clothes.first.name).to eq('Шапка-ушанка')
+    expect(clothes.last.name).to eq('Джинсы')
+    expect(clothes.first.min_temp).to eq(-5)
+    expect(clothes.first.min_temp).to eq(-5)
   end
 end
